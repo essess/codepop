@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.21 LTS (Windows - x64)">
+  <section name="config">
+    <options closefiles="1" openmode="0" name="Code Popper"/>
+    <comment>
+      Pop and display codes from an o5e
+    </comment>
+  </section>
+  <section name="data">
+    <explorer view="." pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2014-01-07 20:32" user="Sean" host="CHERNOBYL"/>
+  </section>
+  <section name="files">
+    <file name="codepop.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="da461b0108d13e6b44c85bf1c140fb1e"/>
+    </file>
+    <file name="assert.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+"/>
+      <fingerprint md5="2bcc82e805b0264168bd144a9155ad10"/>
+    </file>
+    <file name="proc.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="bcce6030bf986e523913ed7e0eef92b1"/>
+    </file>
+    <file name="form.pbf">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="8faaad82af1469dd6d0b8874b4660c08"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="debug" enabled="1" default="1">
+      <inputfile value="codepop.pb"/>
+      <outputfile value="codepop_dbg.exe"/>
+      <executable value="codepop_dbg.exe"/>
+      <options unicode="1" xpskin="1" debug="1"/>
+      <purifier enable="1"/>
+      <temporaryexe value="source"/>
+      <format exe="default" cpu="1"/>
+      <warnings custom="1" type="error"/>
+    </target>
+    <target name="release" enabled="1" default="0">
+      <inputfile value="codepop.pb"/>
+      <outputfile value="codepop.exe"/>
+      <executable value="codepop.exe"/>
+      <options unicode="1" xpskin="1"/>
+      <temporaryexe value="source"/>
+      <warnings custom="1" type="error"/>
+    </target>
+  </section>
+</project>
