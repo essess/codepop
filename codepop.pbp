@@ -10,7 +10,7 @@
   <section name="data">
     <explorer view="." pattern="0"/>
     <log show="1"/>
-    <lastopen date="2014-01-07 20:32" user="Sean" host="CHERNOBYL"/>
+    <lastopen date="2014-02-21 12:46" user="Sean" host="CHERNOBYL"/>
   </section>
   <section name="files">
     <file name="codepop.pb">
@@ -23,10 +23,10 @@
     </file>
     <file name="proc.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
-      <fingerprint md5="bcce6030bf986e523913ed7e0eef92b1"/>
+      <fingerprint md5="be5ef836378d033487ce608e48bc13d1"/>
     </file>
     <file name="form.pbf">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" panelstate="+"/>
       <fingerprint md5="8faaad82af1469dd6d0b8874b4660c08"/>
     </file>
   </section>

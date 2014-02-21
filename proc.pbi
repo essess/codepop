@@ -20,24 +20,28 @@ Procedure load_ports(combo_gadget, filename.s)
   ProcedureReturn 0
 EndProcedure
 
-Structure struct_code
-  mod.b
-  code.b
-EndStructure
-
 Procedure pop_codes(port.s, listview_gadget)
   ClearGadgetItems(listview_gadget)
   If OpenSerialPort(0, port, 115200, #PB_SerialPort_NoParity, 8, 1, #PB_SerialPort_NoHandshake, 32, 32)
-    Protected code.struct_code
+    Protected retry.i = 0
     While WriteSerialPortString(0, "p")
-      Repeat
-        Delay(50)
-      Until AvailableSerialPortInput(0) = 2
-      ReadSerialPortData(0, @code, 2)
-      AddGadgetItem(listview_gadget, -1, "M:["+Str(code\mod)+"] C:["+Str(code\code)+"]")
-      If (code\mod = 0) And (code\code = 0)
-        AddGadgetItem(listview_gadget, -1, "Done")
-        Break
+      Delay(100)
+      Protected cnt.i = AvailableSerialPortInput(0)
+      If cnt
+        retry = 0
+        Dim buff.b(64)
+        ReadSerialPortData(0, @buff(0), cnt)
+        AddGadgetItem(listview_gadget, -1, PeekS(@buff(0),10,#PB_Ascii) )
+        If PeekS(@buff(0),10,#PB_Ascii) = "M[00]C[00]"
+          AddGadgetItem(listview_gadget, -1, "Done")
+          Break
+        EndIf
+      Else
+        retry + 1
+        If retry > 3
+          AddGadgetItem(listview_gadget, -1, "Timeout")
+          Break
+        EndIf
       EndIf
     Wend
     CloseSerialPort(0)
@@ -46,8 +50,8 @@ Procedure pop_codes(port.s, listview_gadget)
   EndIf
 EndProcedure
 ; IDE Options = PureBasic 5.21 LTS (Windows - x64)
-; CursorPosition = 35
-; FirstLine = 6
+; CursorPosition = 34
+; FirstLine = 17
 ; Folding = -
 ; EnableUnicode
 ; EnableXP
